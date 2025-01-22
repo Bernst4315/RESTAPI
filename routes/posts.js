@@ -15,6 +15,10 @@ router
       },
     ];
 
+    const userPosts = posts.filter((p) => p.userId == req.query.userId);
+    if (userPosts.length) res.json(userPosts);
+    else next(); 
+    
     res.json({ posts, links });
   })
   .post((req, res, next) => {
